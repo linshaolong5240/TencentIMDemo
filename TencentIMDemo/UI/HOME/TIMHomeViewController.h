@@ -5,11 +5,11 @@
 //  Created by Sauron on 2022/11/17.
 //
 
-#import <UIKit/UIKit.h>
+#import "TIMBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TIMHomeViewController : UIViewController
+@interface TIMHomeViewController : TIMBaseViewController
 
 @end
 

@@ -7,5 +7,6 @@ target 'TencentIMDemo' do
 
   # Pods for TencentIMDemo
   pod 'JXCategoryView', '~> 1.6.1'
+  pod 'Masonry', '~> 1.1.0'
 
 end

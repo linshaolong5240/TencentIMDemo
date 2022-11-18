@@ -14,17 +14,15 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.backgroundColor = UIColor.whiteColor;
-    UIViewController *rootViewController = TIMHomeViewController.new;
+    UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[TIMHomeViewController new]];
     self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
-
 
 #pragma mark - UISceneSession lifecycle
 

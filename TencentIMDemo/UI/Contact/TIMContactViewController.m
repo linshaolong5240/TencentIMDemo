@@ -1,22 +1,23 @@
 //
-//  TIMHomeViewController.m
+//  TIMContactViewController.m
 //  TencentIMDemo
 //
-//  Created by Sauron on 2022/11/17.
+//  Created by Sauron on 2022/11/18.
+//  Copyright © 2022 sauronpi. All rights reserved.
 //
 
-#import "TIMHomeViewController.h"
+#import "TIMContactViewController.h"
 
-@interface TIMHomeViewController ()
+@interface TIMContactViewController ()
 
 @end
 
-@implementation TIMHomeViewController
+@implementation TIMContactViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = UIColor.orangeColor;
+    self.view.backgroundColor = UIColor.greenColor;
 }
 
 /*

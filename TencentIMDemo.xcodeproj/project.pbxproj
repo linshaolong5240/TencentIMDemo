@@ -12,6 +12,10 @@
 		1834AFFC292631EA0043631C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1834AFFA292631EA0043631C /* LaunchScreen.storyboard */; };
 		1834AFFF292631EA0043631C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834AFFE292631EA0043631C /* main.m */; };
 		1834B008292632840043631C /* TIMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834B007292632840043631C /* TIMHomeViewController.m */; };
+		187C8F9F29272650006E2389 /* TIMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8F9E29272650006E2389 /* TIMMessageViewController.m */; };
+		187C8FA329272665006E2389 /* TIMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FA229272665006E2389 /* TIMBaseViewController.m */; };
+		187C8FA7292726B7006E2389 /* TIMContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FA6292726B7006E2389 /* TIMContactViewController.m */; };
+		187C8FAB292728EA006E2389 /* TIMFriendDynamicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FAA292728EA006E2389 /* TIMFriendDynamicsViewController.m */; };
 		B66FEA29324138C6ECAD1E78 /* Pods_TencentIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9082D8AE107DC094F98CD0 /* Pods_TencentIMDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +30,14 @@
 		1834AFFE292631EA0043631C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1834B006292632840043631C /* TIMHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMHomeViewController.h; sourceTree = "<group>"; };
 		1834B007292632840043631C /* TIMHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMHomeViewController.m; sourceTree = "<group>"; };
+		187C8F9D29272650006E2389 /* TIMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMMessageViewController.h; sourceTree = "<group>"; };
+		187C8F9E29272650006E2389 /* TIMMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMMessageViewController.m; sourceTree = "<group>"; };
+		187C8FA129272665006E2389 /* TIMBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMBaseViewController.h; sourceTree = "<group>"; };
+		187C8FA229272665006E2389 /* TIMBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMBaseViewController.m; sourceTree = "<group>"; };
+		187C8FA5292726B7006E2389 /* TIMContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMContactViewController.h; sourceTree = "<group>"; };
+		187C8FA6292726B7006E2389 /* TIMContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMContactViewController.m; sourceTree = "<group>"; };
+		187C8FA9292728EA006E2389 /* TIMFriendDynamicsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMFriendDynamicsViewController.h; sourceTree = "<group>"; };
+		187C8FAA292728EA006E2389 /* TIMFriendDynamicsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMFriendDynamicsViewController.m; sourceTree = "<group>"; };
 		1FC6BAD52A53885C7B3C8A4B /* Pods-TencentIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TencentIMDemo.debug.xcconfig"; path = "Target Support Files/Pods-TencentIMDemo/Pods-TencentIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C7627AA7DFD7A2181149F6E5 /* Pods-TencentIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TencentIMDemo.release.xcconfig"; path = "Target Support Files/Pods-TencentIMDemo/Pods-TencentIMDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,7 +75,7 @@
 		1834AFEB292631E80043631C /* TencentIMDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1834B005292632680043631C /* Controller */,
+				187C8F9A29272480006E2389 /* UI */,
 				1834AFEC292631E80043631C /* AppDelegate.h */,
 				1834AFED292631E80043631C /* AppDelegate.m */,
 				1834AFF8292631EA0043631C /* Assets.xcassets */,
@@ -74,13 +86,61 @@
 			path = TencentIMDemo;
 			sourceTree = "<group>";
 		};
-		1834B005292632680043631C /* Controller */ = {
+		1834B005292632680043631C /* HOME */ = {
 			isa = PBXGroup;
 			children = (
 				1834B006292632840043631C /* TIMHomeViewController.h */,
 				1834B007292632840043631C /* TIMHomeViewController.m */,
 			);
-			path = Controller;
+			path = HOME;
+			sourceTree = "<group>";
+		};
+		187C8F9A29272480006E2389 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				187C8FA029272655006E2389 /* Base */,
+				187C8FA42927269A006E2389 /* Contact */,
+				187C8FA8292728AE006E2389 /* FriendDynamics */,
+				1834B005292632680043631C /* HOME */,
+				187C8F9C29272610006E2389 /* Message */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		187C8F9C29272610006E2389 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				187C8F9D29272650006E2389 /* TIMMessageViewController.h */,
+				187C8F9E29272650006E2389 /* TIMMessageViewController.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		187C8FA029272655006E2389 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				187C8FA129272665006E2389 /* TIMBaseViewController.h */,
+				187C8FA229272665006E2389 /* TIMBaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		187C8FA42927269A006E2389 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				187C8FA5292726B7006E2389 /* TIMContactViewController.h */,
+				187C8FA6292726B7006E2389 /* TIMContactViewController.m */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		187C8FA8292728AE006E2389 /* FriendDynamics */ = {
+			isa = PBXGroup;
+			children = (
+				187C8FA9292728EA006E2389 /* TIMFriendDynamicsViewController.h */,
+				187C8FAA292728EA006E2389 /* TIMFriendDynamicsViewController.m */,
+			);
+			path = FriendDynamics;
 			sourceTree = "<group>";
 		};
 		30C5FDFF6A82120BC7ACCCFB /* Frameworks */ = {
@@ -214,9 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187C8FA7292726B7006E2389 /* TIMContactViewController.m in Sources */,
 				1834AFEE292631E80043631C /* AppDelegate.m in Sources */,
 				1834AFFF292631EA0043631C /* main.m in Sources */,
+				187C8FAB292728EA006E2389 /* TIMFriendDynamicsViewController.m in Sources */,
 				1834B008292632840043631C /* TIMHomeViewController.m in Sources */,
+				187C8FA329272665006E2389 /* TIMBaseViewController.m in Sources */,
+				187C8F9F29272650006E2389 /* TIMMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
