@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  TencentIMDemo
 //
-//  Created by Apple on 2022/11/17.
+//  Created by Sauron on 2022/11/17.
 //
 
 #import <UIKit/UIKit.h>

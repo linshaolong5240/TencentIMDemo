@@ -8,6 +8,7 @@
 #import "TIMHomeViewController.h"
 #import <Masonry/Masonry.h>
 #import <JXCategoryView/JXCategoryView.h>
+#import <TUICommonModel.h>
 
 #import "TIMContactViewController.h"
 #import "TIMMessageViewController.h"
@@ -54,6 +55,16 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
     [self configureView];
 }
 
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self.navigationController.navigationBar setHidden:YES];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    [self.navigationController.navigationBar setHidden:NO];
+//}
+
 - (void)configureView {
     [self configureCategoryView];
 }
@@ -76,9 +87,9 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
     UIView *container = [UIView new];
     [self.view addSubview:container];
     [container mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_topLayoutGuideTop);
+        make.top.equalTo(self.mas_topLayoutGuideBottom);
         make.left.right.equalTo(self.view);
-        make.height.equalTo(@56);
+        make.height.equalTo(@30);
     }];
     [container addSubview:self.categoryView];
     [self.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {

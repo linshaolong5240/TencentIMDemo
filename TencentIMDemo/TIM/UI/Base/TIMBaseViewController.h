@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TIMBaseViewController : UIViewController <JXCategoryListContentViewDelegate>
 
+- (void)showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
+
 @end
 
 NS_ASSUME_NONNULL_END
