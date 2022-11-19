@@ -15,18 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status);
 
-@protocol TIMManagerDelegate <NSObject>
+@protocol TIMManagerListenr <NSObject>
 
 @optional
 
-- (void)manager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId;
-- (void)manager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description;
+- (void)imManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId;
+- (void)imManager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description;
 
 @end
 
 @interface TIMManager : NSObject
 
-@property(nonatomic, weak) id <TIMManagerDelegate> delegate;
 @property(nonatomic, assign) BOOL directlyLoginEnabled;
 
 @property(nullable ,nonatomic, readonly, copy) NSString *loginUserID;
@@ -35,9 +34,11 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status);
 
 - (void)initSDKWithAppId:(int)AppId;
 - (void)initSDKWithAppId:(int)AppId config:(V2TIMSDKConfig *)config;
-
-- (void)loginWithUserId:(NSString *)userId userSig:(NSString *)userSig;
+- (void)addListener:(id <TIMManagerListenr>)listener;
+- (void)removeListener:(id <TIMManagerListenr>)listener;
 - (V2TIMLoginStatus)getLoginStatus;
+- (void)loginWithUserId:(NSString *)userId userSig:(NSString *)userSig;
+- (void)tryAutoLogin;
 
 @end
 

@@ -7,8 +7,10 @@
 //
 
 #import "TIMManager.h"
+#import <ReactiveObjC/ReactiveObjC.h>
 
-static NSString * const TIMManagerKeyDirectlyLoginEnabled = @"TIMManagerKeyDirectlyLoginEnabled";
+static NSString * const TIMManagerUserId = @"TIMManagerUserId";
+static NSString * const TIMManagerUserSig = @"TIMManagerUserSig";
 
 NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
     switch (status) {
@@ -26,11 +28,25 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
 
 @interface TIMManager () <V2TIMSDKListener>
 
+@property (nonatomic, strong) NSHashTable *listeners;
+
+@property(nonatomic, copy) NSString *userId;
+@property(nonatomic, copy) NSString *userSig;
+
 @end
 
 @implementation TIMManager
 
 #pragma mark - Public
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _listeners = [NSHashTable weakObjectsHashTable];
+        [self loadLastLoginInfo];
+    }
+    return self;
+}
 
 + (instancetype)sharedInstance {
     static TIMManager *shared = nil;
@@ -70,34 +86,81 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
     [[V2TIMManager sharedInstance] unInitSDK];
 }
 
-- (void)loginWithUserId:(NSString *)userId userSig:(NSString *)userSig {
-    if ([self getLoginStatus] == V2TIM_STATUS_LOGINING) {
-        return;
+- (void)addListener:(id <TIMManagerListenr>)listener {
+    if (![self.listeners containsObject:listener]) {
+        [self.listeners addObject:listener];
     }
-    [[V2TIMManager sharedInstance] login:userId userSig:userSig succ:^{
-        if ([self.delegate respondsToSelector:@selector(manager:didLoginWithUserId:)]) {
-            [self.delegate manager:self didLoginWithUserId:userId];
-        }
-    } fail:^(int code, NSString *desc) {
-        if ([self.delegate respondsToSelector:@selector(manager:didLoginFailedWithCode:description:)]) {
-            [self.delegate manager:self didLoginFailedWithCode:code description:desc];
-        }
-    }];
+}
+
+- (void)removeListener:(id <TIMManagerListenr>)listener {
+    if ([self.listeners containsObject:listener]) {
+        [self.listeners removeObject:listener];
+    }
 }
 
 - (V2TIMLoginStatus)getLoginStatus {
     return [[V2TIMManager sharedInstance] getLoginStatus];
 }
 
+- (void)loginWithUserId:(NSString *)userId userSig:(NSString *)userSig {
+    if ([self getLoginStatus] == V2TIM_STATUS_LOGINING) {
+        return;
+    }
+    if ([[[V2TIMManager sharedInstance] getLoginUser] isEqualToString:userId]) {
+        [self listenrsDidLoginWithUserId:userId];
+        return;
+    }
+    if (userId.length == 0 || userSig.length == 0) {
+        return;
+    }
+    @weakify(self)
+    [[V2TIMManager sharedInstance] login:userId userSig:userSig succ:^{
+        @strongify(self)
+        [self saveLastLoginInfoWithUserId:userId userSig:userSig];
+        [self listenrsDidLoginWithUserId:userId];
+    } fail:^(int code, NSString *desc) {
+        @strongify(self)
+        [self listenrsDidLoginFailedWithCode:code description:desc];
+    }];
+}
+
+- (void)tryAutoLogin {
+    if (self.userId && self.userSig) {
+        [self loginWithUserId:self.userId userSig:self.userSig];
+    }
+}
+
+#pragma mark - Private
+
+- (void)listenrsDidLoginWithUserId:(NSString *)userId {
+    for(id <TIMManagerListenr> listener in self.listeners) {
+        if ([listener respondsToSelector:@selector(imManager:didLoginWithUserId:)]) {
+            [listener imManager:self didLoginWithUserId:userId];
+        }
+    }
+}
+
+- (void)listenrsDidLoginFailedWithCode:(int)code description:(NSString *)description {
+    for(id <TIMManagerListenr> listener in self.listeners) {
+        if ([listener respondsToSelector:@selector(imManager:didLoginFailedWithCode:description:)]) {
+            [listener imManager:self didLoginFailedWithCode:code description:description];
+        }
+    }
+}
+
+- (void) saveLastLoginInfoWithUserId:(NSString *)userId userSig:(NSString *)userSig {
+    self.userId= userId;
+    self.userSig = userSig;
+    [[NSUserDefaults standardUserDefaults] setObject:userId forKey:TIMManagerUserId];
+    [[NSUserDefaults standardUserDefaults] setObject:userSig forKey:TIMManagerUserSig];
+}
+
+- (void)loadLastLoginInfo {
+    self.userId = [[NSUserDefaults standardUserDefaults] objectForKey:TIMManagerUserId];
+    self.userSig = [[NSUserDefaults standardUserDefaults] objectForKey:TIMManagerUserSig];
+}
+
 #pragma mark - Getter / Setter
-
-- (BOOL)directlyLoginEnabled {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:TIMManagerKeyDirectlyLoginEnabled];
-}
-
-- (void)setDirectlyLoginEnabled:(BOOL)directlyLoginEnabled {
-    [[NSUserDefaults standardUserDefaults] setBool:directlyLoginEnabled forKey:TIMManagerKeyDirectlyLoginEnabled];
-}
 
 - (NSString *)loginUserID {
     return [V2TIMManager.sharedInstance getLoginUser];

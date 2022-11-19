@@ -11,7 +11,7 @@
 #import "TIMHomeViewController.h"
 #import <TUICommonModel.h>
 
-@interface AppDelegate () <TIMManagerDelegate>
+@interface AppDelegate () <TIMManagerListenr>
 
 @end
 
@@ -19,14 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    TIMManager.sharedInstance.delegate = self;
+    [TIMManager.sharedInstance addListener:self];
     [[TIMManager sharedInstance] initSDKWithAppId:1400759961];
     
-#if DEBUG
-    TIMManager.sharedInstance.directlyLoginEnabled = TRUE;
-    NSLog(@"LoginStatus: %@", NSStringFromV2TIMLoginStatus([TIMManager.sharedInstance getLoginStatus]));
-#endif
-
+    [TIMManager.sharedInstance tryAutoLogin];
+    
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.backgroundColor = UIColor.whiteColor;
     UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[TIMLoginViewController new]];
@@ -35,13 +32,9 @@
     return YES;
 }
 
-- (void)tryAutoLogin {
-    
-}
+#pragma mark - TIMManagerListenr
 
-#pragma mark - TIMManagerDelegate
-
-- (void)manager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId {
+- (void)imManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId {
 #if DEBUG
     NSLog(@"%s userId: %@", __PRETTY_FUNCTION__, userId);
     NSLog(@"LoginStatus: %@", NSStringFromV2TIMLoginStatus([TIMManager.sharedInstance getLoginStatus]));
@@ -50,7 +43,7 @@
     self.window.rootViewController = rootViewController;
 }
 
-- (void)manager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description {
+- (void)imManager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description {
 #if DEBUG
     NSLog(@"%s code: %d description: %@", __PRETTY_FUNCTION__, code, description);
 #endif

@@ -53,9 +53,7 @@
 }
 
 - (void)login {
-    if (!TIMManager.sharedInstance.loginUserID) {
-        [TIMManager.sharedInstance loginWithUserId:@"1234" userSig:@"eJwtzEELgjAYxvHvsmth75zbVPDgJYi62aKgi7gpL5WOKcOIvnumHp-fA-8POZ*KwBtHUhIGQLbzRm3aAWucmYYsWr3Xj9Ja1CSlEYDkSSLo8pjRojOTc85DAFh0wNffhIgllxCztYLNlEVXXfL9tb-vemo6rN3oyyd7NwVtWXfzeZUcFVcH1qpNnJHvD8i7MOQ_"];
-    }
+    [TIMManager.sharedInstance loginWithUserId:@"1234" userSig:@"eJwtzEELgjAYxvHvsmth75zbVPDgJYi62aKgi7gpL5WOKcOIvnumHp-fA-8POZ*KwBtHUhIGQLbzRm3aAWucmYYsWr3Xj9Ja1CSlEYDkSSLo8pjRojOTc85DAFh0wNffhIgllxCztYLNlEVXXfL9tb-vemo6rN3oyyd7NwVtWXfzeZUcFVcH1qpNnJHvD8i7MOQ_"];
 }
 
 @end
