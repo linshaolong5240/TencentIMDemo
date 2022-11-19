@@ -19,7 +19,9 @@
 		187C8FB02927303A006E2389 /* TIMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FAF2927303A006E2389 /* TIMLoginViewController.m */; };
 		187C8FB7292738C2006E2389 /* TIMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FB6292738C2006E2389 /* TIMManager.m */; };
 		189AE70D29278F350095466B /* TUIFoldListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189AE70C29278F350095466B /* TUIFoldListViewController.m */; };
-		18AB33792928AFA700B79491 /* TIMChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB33782928AFA700B79491 /* TIMChatViewController.m */; };
+		18AB33792928AFA700B79491 /* TIMC2CChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB33782928AFA700B79491 /* TIMC2CChatViewController.m */; };
+		18AB337C2928E05100B79491 /* TIMBaseChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB337B2928E05100B79491 /* TIMBaseChatViewController.m */; };
+		18AB337F2928E0A100B79491 /* TIMGroupChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB337E2928E0A100B79491 /* TIMGroupChatViewController.m */; };
 		B66FEA29324138C6ECAD1E78 /* Pods_TencentIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9082D8AE107DC094F98CD0 /* Pods_TencentIMDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +50,12 @@
 		187C8FB6292738C2006E2389 /* TIMManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMManager.m; sourceTree = "<group>"; };
 		189AE70B29278F350095466B /* TUIFoldListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIFoldListViewController.h; sourceTree = "<group>"; };
 		189AE70C29278F350095466B /* TUIFoldListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUIFoldListViewController.m; sourceTree = "<group>"; };
-		18AB33772928AFA700B79491 /* TIMChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMChatViewController.h; sourceTree = "<group>"; };
-		18AB33782928AFA700B79491 /* TIMChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMChatViewController.m; sourceTree = "<group>"; };
+		18AB33772928AFA700B79491 /* TIMC2CChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMC2CChatViewController.h; sourceTree = "<group>"; };
+		18AB33782928AFA700B79491 /* TIMC2CChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMC2CChatViewController.m; sourceTree = "<group>"; };
+		18AB337A2928E05100B79491 /* TIMBaseChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMBaseChatViewController.h; sourceTree = "<group>"; };
+		18AB337B2928E05100B79491 /* TIMBaseChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMBaseChatViewController.m; sourceTree = "<group>"; };
+		18AB337D2928E0A100B79491 /* TIMGroupChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMGroupChatViewController.h; sourceTree = "<group>"; };
+		18AB337E2928E0A100B79491 /* TIMGroupChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMGroupChatViewController.m; sourceTree = "<group>"; };
 		1FC6BAD52A53885C7B3C8A4B /* Pods-TencentIMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TencentIMDemo.debug.xcconfig"; path = "Target Support Files/Pods-TencentIMDemo/Pods-TencentIMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C7627AA7DFD7A2181149F6E5 /* Pods-TencentIMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TencentIMDemo.release.xcconfig"; path = "Target Support Files/Pods-TencentIMDemo/Pods-TencentIMDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,8 +195,12 @@
 		18AB33762928AF8E00B79491 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				18AB33772928AFA700B79491 /* TIMChatViewController.h */,
-				18AB33782928AFA700B79491 /* TIMChatViewController.m */,
+				18AB337A2928E05100B79491 /* TIMBaseChatViewController.h */,
+				18AB337B2928E05100B79491 /* TIMBaseChatViewController.m */,
+				18AB33772928AFA700B79491 /* TIMC2CChatViewController.h */,
+				18AB33782928AFA700B79491 /* TIMC2CChatViewController.m */,
+				18AB337D2928E0A100B79491 /* TIMGroupChatViewController.h */,
+				18AB337E2928E0A100B79491 /* TIMGroupChatViewController.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -329,10 +339,12 @@
 				187C8FA7292726B7006E2389 /* TIMContactViewController.m in Sources */,
 				1834AFEE292631E80043631C /* AppDelegate.m in Sources */,
 				1834AFFF292631EA0043631C /* main.m in Sources */,
+				18AB337F2928E0A100B79491 /* TIMGroupChatViewController.m in Sources */,
 				187C8FAB292728EA006E2389 /* TIMFriendDynamicsViewController.m in Sources */,
 				189AE70D29278F350095466B /* TUIFoldListViewController.m in Sources */,
 				1834B008292632840043631C /* TIMHomeViewController.m in Sources */,
-				18AB33792928AFA700B79491 /* TIMChatViewController.m in Sources */,
+				18AB337C2928E05100B79491 /* TIMBaseChatViewController.m in Sources */,
+				18AB33792928AFA700B79491 /* TIMC2CChatViewController.m in Sources */,
 				187C8FB02927303A006E2389 /* TIMLoginViewController.m in Sources */,
 				187C8FA329272665006E2389 /* TIMBaseViewController.m in Sources */,
 				1845E9132927837200370C15 /* TIMMessageViewController.m in Sources */,

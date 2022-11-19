@@ -7,6 +7,7 @@
 //
 
 #import "TIMC2CChatViewController.h"
+#import <TUIChat.h>
 
 @interface TIMC2CChatViewController ()
 
@@ -17,17 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    TUIC2CChatViewController *chatVC = [[TUIC2CChatViewController alloc] init];
+    [self addChildViewController:chatVC];
+    [self.view addSubview:chatVC.view];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

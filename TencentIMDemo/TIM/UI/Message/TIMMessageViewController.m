@@ -7,9 +7,10 @@
 //
 
 #import "TIMMessageViewController.h"
-#import "TUIConversationListController.h"
-#import "TUIC2CChatViewController.h"
-#import "TUIGroupChatViewController.h"
+#import <TUIConversation.h>
+#import <TUIChat.h>
+#import "TIMC2CChatViewController.h"
+#import "TIMGroupChatViewController.h"
 #import "TUIFoldListViewController.h"
 
 @interface TIMMessageViewController () <TUIConversationListControllerListener>
@@ -30,14 +31,25 @@
     [self.view addSubview:conversationController.view];
 }
 
-- (TUIBaseChatViewController *)getChatViewController:(TUIChatConversationModel *)model {
-    TUIBaseChatViewController *chat = nil;
+//- (TUIBaseChatViewController *)getChatViewController:(TUIChatConversationModel *)model {
+//    TUIBaseChatViewController *chat = nil;
+//    if (model.userID.length > 0) {
+//        chat = [[TUIC2CChatViewController alloc] init];
+//    } else if (model.groupID.length > 0) {
+//        chat = [[TUIGroupChatViewController alloc] init];
+//    }
+//    chat.conversationData = model;
+//    return chat;
+//}
+
+- (TIMBaseChatViewController *)getChatViewController:(TUIChatConversationModel *)model {
+    TIMBaseChatViewController *chat = nil;
     if (model.userID.length > 0) {
-        chat = [[TUIC2CChatViewController alloc] init];
+        chat = [[TIMC2CChatViewController alloc] init];
     } else if (model.groupID.length > 0) {
-        chat = [[TUIGroupChatViewController alloc] init];
+        chat = [[TIMGroupChatViewController alloc] init];
     }
-    chat.conversationData = model;
+//    chat.conversationData = model;
     return chat;
 }
 
@@ -107,7 +119,7 @@
         };
         return;
     }
-    TUIBaseChatViewController *chatVc = [self getChatViewController:[self getConversationModel:conversation]];
+    TIMBaseChatViewController *chatVc = [self getChatViewController:[self getConversationModel:conversation]];
     [self.navigationController pushViewController:chatVc animated:YES];
 }
 

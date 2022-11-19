@@ -1,23 +1,22 @@
 //
-//  TIMC2CChatViewController.m
+//  TIMGroupChatViewController.m
 //  TencentIMDemo
 //
 //  Created by Sauron on 2022/11/19.
 //  Copyright © 2022 sauronpi. All rights reserved.
 //
 
-#import "TIMC2CChatViewController.h"
+#import "TIMGroupChatViewController.h"
 
-@interface TIMC2CChatViewController ()
+@interface TIMGroupChatViewController ()
 
 @end
 
-@implementation TIMC2CChatViewController
+@implementation TIMGroupChatViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
 }
 
 /*
