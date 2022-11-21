@@ -19,10 +19,16 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status);
 
 @optional
 
-- (void)imManager:(TIMManager *)manager didKickedOffline:(NSString *)userId;
-- (void)imManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId;
-- (void)imManager:(TIMManager *)manager didLogoutWithUserId:(NSString *)userId;
-- (void)imManager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description;
+- (void)timOnConnecting;
+- (void)timOnConnectSuccess;
+- (void)timOnConnectFailed:(int)code error:(NSString*)error;
+- (void)timOnKickedOffline;
+- (void)timOnUserSigExpired;
+- (void)timOnSelfInfoUpdated:(V2TIMUserFullInfo *)Info;
+
+- (void)timManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId;
+- (void)timManager:(TIMManager *)manager didLogoutWithUserId:(NSString *)userId;
+- (void)timManager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description;
 
 @end
 

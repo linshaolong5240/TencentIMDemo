@@ -40,28 +40,31 @@
 
 #pragma mark - TIMManagerListenr
 
-- (void)imManager:(TIMManager *)manager didKickedOffline:(NSString *)userId {
+- (void)timOnConnecting { }
+- (void)timOnConnectSuccess { }
+- (void)timOnConnectFailed:(int)code error:(NSString*)error { }
+- (void)timOnKickedOffline {
+    [TUIOfflinePushManager.shareManager unregisterService];
     dispatch_async(dispatch_get_main_queue(), ^{
         UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[TIMLoginViewController new]];
         self.window.rootViewController = rootViewController;
-        [TUIOfflinePushManager.shareManager unregisterService];
     });
 }
+- (void)timOnUserSigExpired { }
+- (void)timOnSelfInfoUpdated:(V2TIMUserFullInfo *)Info { }
 
-- (void)imManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId {
-#if DEBUG
-    NSLog(@"%s userId: %@", __PRETTY_FUNCTION__, userId);
-    NSLog(@"LoginStatus: %@", NSStringFromV2TIMLoginStatus([TIMManager.sharedInstance getLoginStatus]));
-#endif
+
+- (void)timManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId {
     [TUIOfflinePushManager.shareManager registerService];
     UIViewController *rootViewController = [[TUINavigationController alloc] initWithRootViewController:[TIMHomeViewController new]];
     self.window.rootViewController = rootViewController;
 }
 
-- (void)imManager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description {
-#if DEBUG
-    NSLog(@"%s code: %d description: %@", __PRETTY_FUNCTION__, code, description);
-#endif
+- (void)timManager:(TIMManager *)manager didLogoutWithUserId:(NSString *)userId {
+    [TUIOfflinePushManager.shareManager unregisterService];
+}
+
+- (void)timManager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description {
 }
 
 @end
