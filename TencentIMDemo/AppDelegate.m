@@ -6,10 +6,12 @@
 //
 
 #import "AppDelegate.h"
+#import <UserNotifications/UserNotifications.h>
 #import "TIMManager.h"
 #import "TIMLoginViewController.h"
 #import "TIMHomeViewController.h"
 #import <TUICommonModel.h>
+#import <TUIOfflinePushManager+Advance.h>
 
 @interface AppDelegate () <TIMManagerListenr>
 
@@ -32,13 +34,26 @@
     return YES;
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {}
+- (void)applicationWillEnterForeground:(UIApplication *)application {}
+- (void)applicationWillTerminate:(UIApplication *)application {}
+
 #pragma mark - TIMManagerListenr
+
+- (void)imManager:(TIMManager *)manager didKickedOffline:(NSString *)userId {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[TIMLoginViewController new]];
+        self.window.rootViewController = rootViewController;
+        [TUIOfflinePushManager.shareManager unregisterService];
+    });
+}
 
 - (void)imManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId {
 #if DEBUG
     NSLog(@"%s userId: %@", __PRETTY_FUNCTION__, userId);
     NSLog(@"LoginStatus: %@", NSStringFromV2TIMLoginStatus([TIMManager.sharedInstance getLoginStatus]));
 #endif
+    [TUIOfflinePushManager.shareManager registerService];
     UIViewController *rootViewController = [[TUINavigationController alloc] initWithRootViewController:[TIMHomeViewController new]];
     self.window.rootViewController = rootViewController;
 }
@@ -48,22 +63,5 @@
     NSLog(@"%s code: %d description: %@", __PRETTY_FUNCTION__, code, description);
 #endif
 }
-
-#pragma mark - UISceneSession lifecycle
-
-//
-//- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
-//    // Called when a new scene session is being created.
-//    // Use this method to select a configuration to create the new scene with.
-//    return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
-//}
-
-
-//- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
-//    // Called when the user discards a scene session.
-//    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-//    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-//}
-
 
 @end

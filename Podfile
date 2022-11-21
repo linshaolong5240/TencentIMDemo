@@ -13,6 +13,7 @@ target 'TencentIMDemo' do
   pod 'TUIConversation', '~> 6.8.3374'
   pod 'TUIChat', '~> 6.8.3374'
   pod 'TUIContact', '~> 6.8.3374'
+  pod 'TUIOfflinePush', '~> 6.8.3374'
 #  pod 'TUISearch', '~> 6.8.3374'
 
 end

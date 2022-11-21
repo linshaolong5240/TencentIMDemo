@@ -132,10 +132,26 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
 
 #pragma mark - Private
 
+- (void)listernsDidKickedOffline {
+    for(id <TIMManagerListenr> listener in self.listeners) {
+        if ([listener respondsToSelector:@selector(imManager:didKickedOffline:)]) {
+            [listener imManager:self didKickedOffline:self.userId];
+        }
+    }
+}
+
 - (void)listenrsDidLoginWithUserId:(NSString *)userId {
     for(id <TIMManagerListenr> listener in self.listeners) {
         if ([listener respondsToSelector:@selector(imManager:didLoginWithUserId:)]) {
             [listener imManager:self didLoginWithUserId:userId];
+        }
+    }
+}
+
+- (void)listenrsDidLogutWithUserId:(NSString *)userId {
+    for(id <TIMManagerListenr> listener in self.listeners) {
+        if ([listener respondsToSelector:@selector(imManager:didLogoutWithUserId:)]) {
+            [listener imManager:self didLogoutWithUserId:userId];
         }
     }
 }
@@ -180,6 +196,7 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
 #if DEBUG
     NSLog(@"TIM SDK 已经成功连接到服务器");
 #endif
+    [self listernsDidKickedOffline];
 }
 
 /// SDK 连接服务器失败
@@ -194,6 +211,7 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
 #if DEBUG
     NSLog(@"TIM SDK 当前用户被踢下线");
 #endif
+    [self listernsDidKickedOffline];
 }
 
 /// 在线时票据过期：此时您需要生成新的 userSig 并再次调用 V2TIMManager 的 login() 函数重新登录。

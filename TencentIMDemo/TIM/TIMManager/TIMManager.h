@@ -19,7 +19,9 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status);
 
 @optional
 
+- (void)imManager:(TIMManager *)manager didKickedOffline:(NSString *)userId;
 - (void)imManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId;
+- (void)imManager:(TIMManager *)manager didLogoutWithUserId:(NSString *)userId;
 - (void)imManager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description;
 
 @end
