@@ -66,6 +66,7 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
 
 - (void)configureView {
     [self configureCategoryView];
+    [self configureaTopRightButton];
 }
 
 - (void)configureCategoryView {
@@ -100,6 +101,19 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
     [self.listContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(container.mas_bottom);
         make.left.right.bottom.equalTo(self.view);
+    }];
+}
+
+- (void)configureaTopRightButton {
+    UIButton *topRightButton = [[UIButton alloc] init];
+    [topRightButton setTitle:@"more" forState:(UIControlStateNormal)];
+    [topRightButton setImage:[UIImage imageNamed:@"icon_circle_plus"] forState:(UIControlStateNormal)];
+    [topRightButton setTitleColor:UIColor.blackColor forState:(UIControlStateNormal)];
+    [topRightButton alignVerticalImageText];
+    [self.categoryView addSubview:topRightButton];
+    [topRightButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.categoryView);
+            make.right.equalTo(self.categoryView).offset(-12);
     }];
 }
 
