@@ -9,7 +9,6 @@
 #import <Masonry/Masonry.h>
 #import <JXCategoryView/JXCategoryView.h>
 #import <TUICommonModel.h>
-
 #import "TIMContactViewController.h"
 #import "TIMMessageViewController.h"
 #import "TIMFriendDynamicsViewController.h"

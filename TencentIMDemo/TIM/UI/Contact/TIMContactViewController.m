@@ -7,8 +7,12 @@
 //
 
 #import "TIMContactViewController.h"
+#import <TUIContactController.h>
 
-@interface TIMContactViewController ()
+@interface TIMContactViewController () <TUIContactControllerListener>
+
+@property (nonatomic, strong) TUINaviBarIndicatorView *titleView;
+@property (nonatomic, strong) TUIContactController *contactVC;
 
 @end
 
@@ -17,17 +21,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = UIColor.greenColor;
-}
+    _titleView = [[TUINaviBarIndicatorView alloc] init];
+    [_titleView setTitle:@"联系人"];
+    self.navigationItem.titleView = _titleView;
+    self.navigationItem.title = @"";
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    self.contactVC = [[TUIContactController alloc] init];
+    self.contactVC.delegate = self;
+    [self addChildViewController:self.contactVC];
+    [self.view addSubview:self.contactVC.view];
+    
+    [self.contactVC.viewModel loadContacts];
 }
-*/
 
 @end

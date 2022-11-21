@@ -7,9 +7,11 @@
 //
 
 #import "TIMC2CChatViewController.h"
-#import <TUIChat.h>
+#import <TUIC2CChatViewController.h>
 
 @interface TIMC2CChatViewController ()
+
+@property(nonatomic, strong) TUIC2CChatViewController *chatVC;
 
 @end
 
@@ -18,9 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    TUIC2CChatViewController *chatVC = [[TUIC2CChatViewController alloc] init];
-    [self addChildViewController:chatVC];
-    [self.view addSubview:chatVC.view];
+    self.chatVC = [[TUIC2CChatViewController alloc] init];
+    [self addChildViewController:self.chatVC];
+    [self.view addSubview:self.chatVC.view];
+}
+
+- (void)setConversation:(TUIChatConversationModel *)conversationData {
+    self.chatVC.conversationData = conversationData;
 }
 
 @end

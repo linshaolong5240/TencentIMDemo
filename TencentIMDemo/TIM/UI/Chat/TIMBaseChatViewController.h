@@ -8,9 +8,13 @@
 
 #import "TIMBaseViewController.h"
 
+@class TUIChatConversationModel;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TIMBaseChatViewController : TIMBaseViewController
+
+- (void)setConversation:(TUIChatConversationModel *)conversationData;
 
 @end
 

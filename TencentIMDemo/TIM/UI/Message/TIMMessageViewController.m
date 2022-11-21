@@ -31,27 +31,27 @@
     [self.view addSubview:conversationController.view];
 }
 
-//- (TUIBaseChatViewController *)getChatViewController:(TUIChatConversationModel *)model {
-//    TUIBaseChatViewController *chat = nil;
-//    if (model.userID.length > 0) {
-//        chat = [[TUIC2CChatViewController alloc] init];
-//    } else if (model.groupID.length > 0) {
-//        chat = [[TUIGroupChatViewController alloc] init];
-//    }
-//    chat.conversationData = model;
-//    return chat;
-//}
-
-- (TIMBaseChatViewController *)getChatViewController:(TUIChatConversationModel *)model {
-    TIMBaseChatViewController *chat = nil;
+- (TUIBaseChatViewController *)getChatViewController:(TUIChatConversationModel *)model {
+    TUIBaseChatViewController *chat = nil;
     if (model.userID.length > 0) {
-        chat = [[TIMC2CChatViewController alloc] init];
+        chat = [[TUIC2CChatViewController alloc] init];
     } else if (model.groupID.length > 0) {
-        chat = [[TIMGroupChatViewController alloc] init];
+        chat = [[TUIGroupChatViewController alloc] init];
     }
-//    chat.conversationData = model;
+    chat.conversationData = model;
     return chat;
 }
+
+//- (TIMBaseChatViewController *)getChatViewController:(TUIChatConversationModel *)model {
+//    TIMBaseChatViewController *chat = nil;
+//    if (model.userID.length > 0) {
+//        chat = [[TIMC2CChatViewController alloc] init];
+//    } else if (model.groupID.length > 0) {
+//        chat = [[TIMGroupChatViewController alloc] init];
+//    }
+//    [chat setConversation:model];
+//    return chat;
+//}
 
 - (TUIChatConversationModel *)getConversationModel:(TUIConversationCellData *)data {
     TUIChatConversationModel *model = [[TUIChatConversationModel alloc] init];
