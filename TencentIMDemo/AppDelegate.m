@@ -34,14 +34,16 @@ TUIOfflinePushCertificateIDForAPNS(36102)
     
     // 自定义修改 TUIChat 组件的主题 - 修改主题资源包中的内置主题
     // -- 1. 获取自定义后的资源包路径
-    NSString *customChatThemePath = [NSBundle.mainBundle pathForResource:@"TUIChatCustomTheme.bundle" ofType:nil];
     // -- 2. 给 TUIChat 组件注册自定义的主题资源包路径，用于覆盖内置的主题，note: 此时只能覆盖 TUIThemeModuleChat
-    TUIRegisterThemeResourcePath(customChatThemePath, TUIThemeModuleChat);
-//
-    NSString *customCoreThemePath = [NSBundle.mainBundle pathForResource:@"TUICoreCustomTheme.bundle" ofType:nil];
-    TUIRegisterThemeResourcePath(customCoreThemePath, TUIThemeModuleCore);
-    [TUIThemeManager.shareManager applyTheme:@"demo" forModule:TUIThemeModuleCore];
+    TUIRegisterThemeResourcePath([NSBundle.mainBundle pathForResource:@"TUICoreCustomTheme.bundle" ofType:nil], TUIThemeModuleCore);
+    [TUIThemeManager.shareManager applyTheme:@"tim" forModule:TUIThemeModuleCore];
+
+    TUIRegisterThemeResourcePath([NSBundle.mainBundle pathForResource:@"TUIChatCustomTheme.bundle" ofType:nil], TUIThemeModuleChat);
+    [TUIThemeManager.shareManager applyTheme:@"tim" forModule:TUIThemeModuleChat];
     
+    TUIRegisterThemeResourcePath([NSBundle.mainBundle pathForResource:@"TUIDemoTheme.bundle" ofType:nil], TUIThemeModuleDemo);
+    [TUIThemeManager.shareManager applyTheme:@"tim" forModule:TUIThemeModuleDemo];
+
     [TIMManager.sharedInstance addListener:self];
     [[TIMManager sharedInstance] initSDKWithAppId:1400759961];
     [TIMManager.sharedInstance tryAutoLogin];
