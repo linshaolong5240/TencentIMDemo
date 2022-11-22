@@ -14,5 +14,6 @@
 
 //Extension
 #import "UIButton+TIM.h"
+#import <ReactiveObjC/ReactiveObjC.h>
 
 #endif /* TIMPrefixHeader_pch */

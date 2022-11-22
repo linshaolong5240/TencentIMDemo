@@ -13,6 +13,8 @@
 		1834AFFF292631EA0043631C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834AFFE292631EA0043631C /* main.m */; };
 		1834B008292632840043631C /* TIMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834B007292632840043631C /* TIMHomeViewController.m */; };
 		1845E9132927837200370C15 /* TIMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1845E9122927837200370C15 /* TIMMessageViewController.m */; };
+		185D7F71292CA8960021FD15 /* TIMTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7F70292CA8960021FD15 /* TIMTabbarController.m */; };
+		185D7F74292CAF850021FD15 /* TIMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7F73292CAF850021FD15 /* TIMNavigationController.m */; };
 		18705AB8292B698B00AA1116 /* UIButton+TIM.m in Sources */ = {isa = PBXBuildFile; fileRef = 18705AB7292B698B00AA1116 /* UIButton+TIM.m */; };
 		18705AB9292B69CC00AA1116 /* TUIFoldListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189AE70C29278F350095466B /* TUIFoldListViewController.m */; };
 		187C8FA329272665006E2389 /* TIMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FA229272665006E2389 /* TIMBaseViewController.m */; };
@@ -66,6 +68,10 @@
 		1834B007292632840043631C /* TIMHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMHomeViewController.m; sourceTree = "<group>"; };
 		1845E9112927837200370C15 /* TIMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMMessageViewController.h; sourceTree = "<group>"; };
 		1845E9122927837200370C15 /* TIMMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMMessageViewController.m; sourceTree = "<group>"; };
+		185D7F6F292CA8960021FD15 /* TIMTabbarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMTabbarController.h; sourceTree = "<group>"; };
+		185D7F70292CA8960021FD15 /* TIMTabbarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMTabbarController.m; sourceTree = "<group>"; };
+		185D7F72292CAF850021FD15 /* TIMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMNavigationController.h; sourceTree = "<group>"; };
+		185D7F73292CAF850021FD15 /* TIMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMNavigationController.m; sourceTree = "<group>"; };
 		18705AB6292B698B00AA1116 /* UIButton+TIM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+TIM.h"; sourceTree = "<group>"; };
 		18705AB7292B698B00AA1116 /* UIButton+TIM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TIM.m"; sourceTree = "<group>"; };
 		18705ABA292B6A0700AA1116 /* TIMPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMPrefixHeader.pch; sourceTree = "<group>"; };
@@ -170,6 +176,17 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		185D7F75292CAFD10021FD15 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				185D7F72292CAF850021FD15 /* TIMNavigationController.h */,
+				185D7F73292CAF850021FD15 /* TIMNavigationController.m */,
+				185D7F6F292CA8960021FD15 /* TIMTabbarController.h */,
+				185D7F70292CA8960021FD15 /* TIMTabbarController.m */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		18705AB5292B696000AA1116 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +206,7 @@
 				1834B005292632680043631C /* HOME */,
 				187C8FAD2927300F006E2389 /* Login */,
 				1845E9102927835A00370C15 /* Message */,
+				185D7F75292CAFD10021FD15 /* Navigation */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -432,6 +450,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185D7F71292CA8960021FD15 /* TIMTabbarController.m in Sources */,
+				185D7F74292CAF850021FD15 /* TIMNavigationController.m in Sources */,
 				187C8FA7292726B7006E2389 /* TIMContactViewController.m in Sources */,
 				1834AFEE292631E80043631C /* AppDelegate.m in Sources */,
 				1834AFFF292631EA0043631C /* main.m in Sources */,

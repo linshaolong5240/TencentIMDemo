@@ -248,7 +248,7 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
 #if DEBUG
     NSLog(@"TIM SDK 已经成功连接到服务器");
 #endif
-    [self onConnectSuccess];
+    [self listenersOnConnectSuccess];
 }
 
 /// SDK 连接服务器失败

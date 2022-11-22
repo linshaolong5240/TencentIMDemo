@@ -9,9 +9,11 @@
 #import <UserNotifications/UserNotifications.h>
 #import "TIMManager.h"
 #import "TIMLoginViewController.h"
-#import "TIMHomeViewController.h"
+#import <TUIDefine.h>
 #import <TUICommonModel.h>
 #import <TUIOfflinePushManager+Advance.h>
+
+#import "TIMTabbarController.h"
 
 @interface AppDelegate () <TIMManagerListenr>
 
@@ -19,16 +21,24 @@
 
 @implementation AppDelegate
 
+#if 0
+// 配置开发环境证书
+TUIOfflinePushCertificateIDForAPNS(36093)
+#else
+// 配置生产环境证书
+TUIOfflinePushCertificateIDForAPNS(36102)
+#endif
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
     [TIMManager.sharedInstance addListener:self];
     [[TIMManager sharedInstance] initSDKWithAppId:1400759961];
-    
     [TIMManager.sharedInstance tryAutoLogin];
     
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.backgroundColor = UIColor.whiteColor;
-    UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[TIMLoginViewController new]];
+    UIViewController *rootViewController = [TIMTabbarController new];
     self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];
     return YES;
@@ -45,19 +55,15 @@
 - (void)timOnConnectFailed:(int)code error:(NSString*)error { }
 - (void)timOnKickedOffline {
     [TUIOfflinePushManager.shareManager unregisterService];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[TIMLoginViewController new]];
-        self.window.rootViewController = rootViewController;
-    });
+    UIViewController *rootViewController = [[UINavigationController alloc] initWithRootViewController:[TIMLoginViewController new]];
+    self.window.rootViewController = rootViewController;
 }
 - (void)timOnUserSigExpired { }
 - (void)timOnSelfInfoUpdated:(V2TIMUserFullInfo *)Info { }
 
-
 - (void)timManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId {
-    [TUIOfflinePushManager.shareManager registerService];
-    UIViewController *rootViewController = [[TUINavigationController alloc] initWithRootViewController:[TIMHomeViewController new]];
-    self.window.rootViewController = rootViewController;
+    TIMTabbarController *tabBarController = (TIMTabbarController *)self.window.rootViewController;
+    tabBarController.selectedViewController = tabBarController.viewControllers[1];
 }
 
 - (void)timManager:(TIMManager *)manager didLogoutWithUserId:(NSString *)userId {
