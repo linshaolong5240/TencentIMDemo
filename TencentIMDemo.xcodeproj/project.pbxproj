@@ -27,7 +27,7 @@
 		18AB337F2928E0A100B79491 /* TIMGroupChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB337E2928E0A100B79491 /* TIMGroupChatViewController.m */; };
 		18AF6168292BA48700B9DF69 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF6167292BA48700B9DF69 /* NotificationService.m */; };
 		18AF616C292BA48700B9DF69 /* PushService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 18AF6164292BA48700B9DF69 /* PushService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B66FEA29324138C6ECAD1E78 /* Pods_TencentIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9082D8AE107DC094F98CD0 /* Pods_TencentIMDemo.framework */; };
+		D8624C0DAE22C17C07D2BBF2 /* Pods_TencentIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076D56847EC7E76B27FD1884 /* Pods_TencentIMDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C9082D8AE107DC094F98CD0 /* Pods_TencentIMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TencentIMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		076D56847EC7E76B27FD1884 /* Pods_TencentIMDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TencentIMDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		182C9BB1292B8DE500F61FC1 /* TencentIMDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TencentIMDemo.entitlements; sourceTree = "<group>"; };
 		1834AFE9292631E80043631C /* TencentIMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TencentIMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1834AFEC292631E80043631C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B66FEA29324138C6ECAD1E78 /* Pods_TencentIMDemo.framework in Frameworks */,
+				D8624C0DAE22C17C07D2BBF2 /* Pods_TencentIMDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +292,7 @@
 		30C5FDFF6A82120BC7ACCCFB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0C9082D8AE107DC094F98CD0 /* Pods_TencentIMDemo.framework */,
+				076D56847EC7E76B27FD1884 /* Pods_TencentIMDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -319,6 +319,7 @@
 				1834AFE7292631E80043631C /* Resources */,
 				620697FCECBC369263AD1A5A /* [CP] Embed Pods Frameworks */,
 				18AF616D292BA48700B9DF69 /* Embed Foundation Extensions */,
+				93939F3CA88DD8DD9DAA1EED /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -441,6 +442,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93939F3CA88DD8DD9DAA1EED /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TencentIMDemo/Pods-TencentIMDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TencentIMDemo/Pods-TencentIMDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TencentIMDemo/Pods-TencentIMDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
