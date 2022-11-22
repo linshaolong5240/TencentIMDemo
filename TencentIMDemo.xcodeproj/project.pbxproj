@@ -17,6 +17,8 @@
 		185D7F74292CAF850021FD15 /* TIMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7F73292CAF850021FD15 /* TIMNavigationController.m */; };
 		18705AB8292B698B00AA1116 /* UIButton+TIM.m in Sources */ = {isa = PBXBuildFile; fileRef = 18705AB7292B698B00AA1116 /* UIButton+TIM.m */; };
 		18705AB9292B69CC00AA1116 /* TUIFoldListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189AE70C29278F350095466B /* TUIFoldListViewController.m */; };
+		187C3764292CC7920073618C /* TUIChatCustomTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 187C3763292CC7920073618C /* TUIChatCustomTheme.bundle */; };
+		187C3766292CC8B80073618C /* TUICoreCustomTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 187C3765292CC8B80073618C /* TUICoreCustomTheme.bundle */; };
 		187C8FA329272665006E2389 /* TIMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FA229272665006E2389 /* TIMBaseViewController.m */; };
 		187C8FA7292726B7006E2389 /* TIMContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FA6292726B7006E2389 /* TIMContactViewController.m */; };
 		187C8FAB292728EA006E2389 /* TIMFriendDynamicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FAA292728EA006E2389 /* TIMFriendDynamicsViewController.m */; };
@@ -75,6 +77,8 @@
 		18705AB6292B698B00AA1116 /* UIButton+TIM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+TIM.h"; sourceTree = "<group>"; };
 		18705AB7292B698B00AA1116 /* UIButton+TIM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TIM.m"; sourceTree = "<group>"; };
 		18705ABA292B6A0700AA1116 /* TIMPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMPrefixHeader.pch; sourceTree = "<group>"; };
+		187C3763292CC7920073618C /* TUIChatCustomTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUIChatCustomTheme.bundle; sourceTree = "<group>"; };
+		187C3765292CC8B80073618C /* TUICoreCustomTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUICoreCustomTheme.bundle; sourceTree = "<group>"; };
 		187C8FA129272665006E2389 /* TIMBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMBaseViewController.h; sourceTree = "<group>"; };
 		187C8FA229272665006E2389 /* TIMBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMBaseViewController.m; sourceTree = "<group>"; };
 		187C8FA5292726B7006E2389 /* TIMContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMContactViewController.h; sourceTree = "<group>"; };
@@ -196,6 +200,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		187C3762292CC7830073618C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				187C3765292CC8B80073618C /* TUICoreCustomTheme.bundle */,
+				187C3763292CC7920073618C /* TUIChatCustomTheme.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		187C8F9A29272480006E2389 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +263,7 @@
 		187C8FB329273897006E2389 /* TIM */ = {
 			isa = PBXGroup;
 			children = (
+				187C3762292CC7830073618C /* Resource */,
 				18705AB5292B696000AA1116 /* Extension */,
 				187C8FB4292738A9006E2389 /* TIMManager */,
 				187C8F9A29272480006E2389 /* UI */,
@@ -391,6 +405,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1834AFFC292631EA0043631C /* LaunchScreen.storyboard in Resources */,
+				187C3764292CC7920073618C /* TUIChatCustomTheme.bundle in Resources */,
+				187C3766292CC8B80073618C /* TUICoreCustomTheme.bundle in Resources */,
 				1834AFF9292631EA0043631C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

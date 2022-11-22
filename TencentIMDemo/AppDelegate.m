@@ -10,7 +10,7 @@
 #import "TIMManager.h"
 #import "TIMLoginViewController.h"
 #import <TUIDefine.h>
-#import <TUICommonModel.h>
+#import <TUIThemeManager.h>
 #import <TUIOfflinePushManager+Advance.h>
 
 #import "TIMTabbarController.h"
@@ -31,7 +31,17 @@ TUIOfflinePushCertificateIDForAPNS(36102)
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
+    
+    // 自定义修改 TUIChat 组件的主题 - 修改主题资源包中的内置主题
+    // -- 1. 获取自定义后的资源包路径
+    NSString *customChatThemePath = [NSBundle.mainBundle pathForResource:@"TUIChatCustomTheme.bundle" ofType:nil];
+    // -- 2. 给 TUIChat 组件注册自定义的主题资源包路径，用于覆盖内置的主题，note: 此时只能覆盖 TUIThemeModuleChat
+    TUIRegisterThemeResourcePath(customChatThemePath, TUIThemeModuleChat);
+//
+    NSString *customCoreThemePath = [NSBundle.mainBundle pathForResource:@"TUICoreCustomTheme.bundle" ofType:nil];
+    TUIRegisterThemeResourcePath(customCoreThemePath, TUIThemeModuleCore);
+    [TUIThemeManager.shareManager applyTheme:@"demo" forModule:TUIThemeModuleCore];
+    
     [TIMManager.sharedInstance addListener:self];
     [[TIMManager sharedInstance] initSDKWithAppId:1400759961];
     [TIMManager.sharedInstance tryAutoLogin];

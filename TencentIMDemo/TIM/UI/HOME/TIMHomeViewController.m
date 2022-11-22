@@ -56,12 +56,12 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
 
 //- (void)viewWillAppear:(BOOL)animated {
 //    [super viewWillAppear:animated];
-//    [self.navigationController.navigationBar setHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
 //}
 //
 //- (void)viewWillDisappear:(BOOL)animated {
 //    [super viewWillDisappear:animated];
-//    [self.navigationController.navigationBar setHidden:NO];
+//    [self.navigationController setNavigationBarHidden:NO];
 //}
 
 - (void)configureView {
@@ -106,10 +106,10 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
 
 - (void)configureaTopRightButton {
     UIButton *topRightButton = [[UIButton alloc] init];
-    [topRightButton setTitle:@"more" forState:(UIControlStateNormal)];
+//    [topRightButton setTitle:@"more" forState:(UIControlStateNormal)];
+//    [topRightButton setTitleColor:UIColor.blackColor forState:(UIControlStateNormal)];
     [topRightButton setImage:[UIImage imageNamed:@"icon_circle_plus"] forState:(UIControlStateNormal)];
-    [topRightButton setTitleColor:UIColor.blackColor forState:(UIControlStateNormal)];
-    [topRightButton alignVerticalImageText];
+//    [topRightButton alignVerticalImageText];
     [self.categoryView addSubview:topRightButton];
     [topRightButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.categoryView);
