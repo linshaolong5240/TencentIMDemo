@@ -130,6 +130,17 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
     }
 }
 
+- (void)loginout {
+    @weakify(self)
+    [V2TIMManager.sharedInstance logout:^{
+        @strongify(self)
+        [self listenrsDidLogutWithUserId:self.userId];
+    } fail:^(int code, NSString *desc) {
+        @strongify(self)
+        [self listenrsDidLoginFailedWithCode:code description:desc];
+    }];
+}
+
 #pragma mark - Private
 
 - (void)listenersOnConnecting {
@@ -182,8 +193,16 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
 
 - (void)listenrsDidLoginWithUserId:(NSString *)userId {
     for(id <TIMManagerListenr> listener in self.listeners) {
-        if ([listener respondsToSelector:@selector(timManagertimManager:didLoginWithUserId:)]) {
+        if ([listener respondsToSelector:@selector(timManager:didLoginWithUserId:)]) {
             [listener timManager:self didLoginWithUserId:userId];
+        }
+    }
+}
+
+- (void)listenrsDidLoginFailedWithCode:(int)code description:(NSString *)description {
+    for(id <TIMManagerListenr> listener in self.listeners) {
+        if ([listener respondsToSelector:@selector(timManager:didLoginFailedWithCode:description:)]) {
+            [listener timManager:self didLoginFailedWithCode:code description:description];
         }
     }
 }
@@ -196,15 +215,7 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status) {
     }
 }
 
-- (void)listenrsDidLoginFailedWithCode:(int)code description:(NSString *)description {
-    for(id <TIMManagerListenr> listener in self.listeners) {
-        if ([listener respondsToSelector:@selector(timManagertimManager:didLoginFailedWithCode:description:)]) {
-            [listener timManager:self didLoginFailedWithCode:code description:description];
-        }
-    }
-}
-
-- (void) saveLastLoginInfoWithUserId:(NSString *)userId userSig:(NSString *)userSig {
+- (void)saveLastLoginInfoWithUserId:(NSString *)userId userSig:(NSString *)userSig {
     self.userId= userId;
     self.userSig = userSig;
     [[NSUserDefaults standardUserDefaults] setObject:userId forKey:TIMManagerUserId];

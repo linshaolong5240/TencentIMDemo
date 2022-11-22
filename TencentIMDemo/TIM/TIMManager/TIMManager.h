@@ -27,8 +27,9 @@ NSString *NSStringFromV2TIMLoginStatus(V2TIMLoginStatus status);
 - (void)timOnSelfInfoUpdated:(V2TIMUserFullInfo *)Info;
 
 - (void)timManager:(TIMManager *)manager didLoginWithUserId:(NSString *)userId;
-- (void)timManager:(TIMManager *)manager didLogoutWithUserId:(NSString *)userId;
 - (void)timManager:(TIMManager *)manager didLoginFailedWithCode:(int)code description:(NSString *)description;
+- (void)timManager:(TIMManager *)manager didLogoutWithUserId:(NSString *)userId;
+- (void)timManager:(TIMManager *)manager didLogouFailedWithCode:(int)code description:(NSString *)description;
 
 @end
 
