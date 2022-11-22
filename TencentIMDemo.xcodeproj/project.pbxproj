@@ -24,9 +24,6 @@
 		187C8FAB292728EA006E2389 /* TIMFriendDynamicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FAA292728EA006E2389 /* TIMFriendDynamicsViewController.m */; };
 		187C8FB02927303A006E2389 /* TIMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FAF2927303A006E2389 /* TIMLoginViewController.m */; };
 		187C8FB7292738C2006E2389 /* TIMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 187C8FB6292738C2006E2389 /* TIMManager.m */; };
-		18AB33792928AFA700B79491 /* TIMC2CChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB33782928AFA700B79491 /* TIMC2CChatViewController.m */; };
-		18AB337C2928E05100B79491 /* TIMBaseChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB337B2928E05100B79491 /* TIMBaseChatViewController.m */; };
-		18AB337F2928E0A100B79491 /* TIMGroupChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB337E2928E0A100B79491 /* TIMGroupChatViewController.m */; };
 		18AF6168292BA48700B9DF69 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AF6167292BA48700B9DF69 /* NotificationService.m */; };
 		18AF616C292BA48700B9DF69 /* PushService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 18AF6164292BA48700B9DF69 /* PushService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D8624C0DAE22C17C07D2BBF2 /* Pods_TencentIMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076D56847EC7E76B27FD1884 /* Pods_TencentIMDemo.framework */; };
@@ -91,12 +88,6 @@
 		187C8FB6292738C2006E2389 /* TIMManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMManager.m; sourceTree = "<group>"; };
 		189AE70B29278F350095466B /* TUIFoldListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUIFoldListViewController.h; sourceTree = "<group>"; };
 		189AE70C29278F350095466B /* TUIFoldListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUIFoldListViewController.m; sourceTree = "<group>"; };
-		18AB33772928AFA700B79491 /* TIMC2CChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMC2CChatViewController.h; sourceTree = "<group>"; };
-		18AB33782928AFA700B79491 /* TIMC2CChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMC2CChatViewController.m; sourceTree = "<group>"; };
-		18AB337A2928E05100B79491 /* TIMBaseChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMBaseChatViewController.h; sourceTree = "<group>"; };
-		18AB337B2928E05100B79491 /* TIMBaseChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMBaseChatViewController.m; sourceTree = "<group>"; };
-		18AB337D2928E0A100B79491 /* TIMGroupChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMGroupChatViewController.h; sourceTree = "<group>"; };
-		18AB337E2928E0A100B79491 /* TIMGroupChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMGroupChatViewController.m; sourceTree = "<group>"; };
 		18AF6164292BA48700B9DF69 /* PushService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PushService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		18AF6166292BA48700B9DF69 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		18AF6167292BA48700B9DF69 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
@@ -213,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				187C8FA029272655006E2389 /* Base */,
-				18AB33762928AF8E00B79491 /* Chat */,
 				187C8FA42927269A006E2389 /* Contact */,
 				187C8FA8292728AE006E2389 /* FriendDynamics */,
 				1834B005292632680043631C /* HOME */,
@@ -278,19 +268,6 @@
 				187C8FB6292738C2006E2389 /* TIMManager.m */,
 			);
 			path = TIMManager;
-			sourceTree = "<group>";
-		};
-		18AB33762928AF8E00B79491 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				18AB337A2928E05100B79491 /* TIMBaseChatViewController.h */,
-				18AB337B2928E05100B79491 /* TIMBaseChatViewController.m */,
-				18AB33772928AFA700B79491 /* TIMC2CChatViewController.h */,
-				18AB33782928AFA700B79491 /* TIMC2CChatViewController.m */,
-				18AB337D2928E0A100B79491 /* TIMGroupChatViewController.h */,
-				18AB337E2928E0A100B79491 /* TIMGroupChatViewController.m */,
-			);
-			path = Chat;
 			sourceTree = "<group>";
 		};
 		18AF6165292BA48700B9DF69 /* PushService */ = {
@@ -489,13 +466,10 @@
 				187C8FA7292726B7006E2389 /* TIMContactViewController.m in Sources */,
 				1834AFEE292631E80043631C /* AppDelegate.m in Sources */,
 				1834AFFF292631EA0043631C /* main.m in Sources */,
-				18AB337F2928E0A100B79491 /* TIMGroupChatViewController.m in Sources */,
 				187C8FAB292728EA006E2389 /* TIMFriendDynamicsViewController.m in Sources */,
 				18705AB8292B698B00AA1116 /* UIButton+TIM.m in Sources */,
 				1834B008292632840043631C /* TIMHomeViewController.m in Sources */,
-				18AB337C2928E05100B79491 /* TIMBaseChatViewController.m in Sources */,
 				18705AB9292B69CC00AA1116 /* TUIFoldListViewController.m in Sources */,
-				18AB33792928AFA700B79491 /* TIMC2CChatViewController.m in Sources */,
 				187C8FB02927303A006E2389 /* TIMLoginViewController.m in Sources */,
 				187C8FA329272665006E2389 /* TIMBaseViewController.m in Sources */,
 				1845E9132927837200370C15 /* TIMMessageViewController.m in Sources */,

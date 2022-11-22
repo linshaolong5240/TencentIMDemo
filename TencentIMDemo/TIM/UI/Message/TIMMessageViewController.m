@@ -9,8 +9,8 @@
 #import "TIMMessageViewController.h"
 #import <TUIConversation.h>
 #import <TUIChat.h>
-#import "TIMC2CChatViewController.h"
-#import "TIMGroupChatViewController.h"
+#import <TUIC2CChatViewController.h>
+#import <TUIGroupChatViewController.h>
 #import "TUIFoldListViewController.h"
 
 @interface TIMMessageViewController () <TUIConversationListControllerListener>
@@ -41,17 +41,6 @@
     chat.conversationData = model;
     return chat;
 }
-
-//- (TIMBaseChatViewController *)getChatViewController:(TUIChatConversationModel *)model {
-//    TIMBaseChatViewController *chat = nil;
-//    if (model.userID.length > 0) {
-//        chat = [[TIMC2CChatViewController alloc] init];
-//    } else if (model.groupID.length > 0) {
-//        chat = [[TIMGroupChatViewController alloc] init];
-//    }
-//    [chat setConversation:model];
-//    return chat;
-//}
 
 - (TUIChatConversationModel *)getConversationModel:(TUIConversationCellData *)data {
     TUIChatConversationModel *model = [[TUIChatConversationModel alloc] init];
@@ -119,7 +108,7 @@
         };
         return;
     }
-    TIMBaseChatViewController *chatVc = [self getChatViewController:[self getConversationModel:conversation]];
+    TUIBaseChatViewController *chatVc = [self getChatViewController:[self getConversationModel:conversation]];
     [self.navigationController pushViewController:chatVc animated:YES];
 }
 
