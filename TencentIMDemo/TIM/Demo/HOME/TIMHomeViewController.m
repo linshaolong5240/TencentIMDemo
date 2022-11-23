@@ -85,10 +85,14 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
 - (void)configureCategoryView {
     self.categoryView = [[JXCategoryTitleView alloc] init];
     self.categoryView.titles = self.categories;
+    self.categoryView.titleSelectedColor = [UIColor tui_colorWithHex:@"#333333"];
+    self.categoryView.titleColor = [UIColor tui_colorWithHex:@"#666666"];
+    self.categoryView.titleFont = [UIFont systemFontOfSize:14 weight:(UIFontWeightMedium)];
+    self.categoryView.titleFont = [UIFont systemFontOfSize:16 weight:(UIFontWeightMedium)];
     self.categoryView.averageCellSpacingEnabled = NO;
     
     JXCategoryIndicatorLineView *lineIndicatorView = [[JXCategoryIndicatorLineView alloc] init];
-    lineIndicatorView.indicatorColor = UIColor.orangeColor;
+    lineIndicatorView.indicatorColor = [UIColor tui_colorWithHex:@"#FEA902"];
     lineIndicatorView.indicatorHeight = 2.0f;
     
     self.categoryView.indicators = @[lineIndicatorView];
@@ -132,26 +136,69 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
 }
 
 - (void)topRightButtonOnClicked:(UIButton *)button event:(UIControlEvents)event {
-    NSMutableArray *menus = [NSMutableArray array];
-    TIMPopCellData *friend = [[TIMPopCellData alloc] init];
-    
-    friend.image = TUIDemoDynamicImage(@"pop_icon_new_chat_img", [UIImage imageNamed:TUIDemoImagePath(@"new_chat")]);
-    friend.title = @"新会话";
-    [menus addObject:friend];
-    
-    TIMPopCellData *group = [[TIMPopCellData alloc] init];
-    group.image = TUIDemoDynamicImage(@"pop_icon_new_group_img", [UIImage imageNamed:TUIDemoImagePath(@"new_groupchat")]);
-    group.title = @"新群聊";
-    [menus addObject:group];
+    switch (self.categoryView.selectedIndex) {
+        case TIMHomeItemMessage:
+        {
+            NSMutableArray *menus = [NSMutableArray array];
+            TIMPopCellData *friend = [[TIMPopCellData alloc] init];
+            friend.image = TUIDemoDynamicImage(@"pop_icon_new_chat_img", [UIImage imageNamed:TUIDemoImagePath(@"new_chat")]);
+            friend.title = @"新会话";
+            [menus addObject:friend];
+            
+            TIMPopCellData *group = [[TIMPopCellData alloc] init];
+            group.image = TUIDemoDynamicImage(@"pop_icon_new_group_img", [UIImage imageNamed:TUIDemoImagePath(@"new_groupchat")]);
+            group.title = @"新群聊";
+            [menus addObject:group];
+            
+            CGFloat height = [TIMPopCell getHeight] * menus.count + TPopView_Arrow_Size.height;
+            CGFloat orginY = StatusBar_Height + NavBar_Height;
+            TIMPopView *popView = [[TIMPopView alloc] initWithFrame:CGRectMake(Screen_Width - 155, orginY, 145, height)];
+            CGRect frameInNaviView = [self.navigationController.view convertRect:button.frame fromView:button.superview];
+            popView.arrowPoint = CGPointMake(frameInNaviView.origin.x + frameInNaviView.size.width * 0.5, orginY);
+            popView.delegate = self;
+            [popView setData:menus];
+            [popView showInWindow:self.view.window];
+        }
+            break;
+        case TIMHomeItemContact:
+        {
+            NSMutableArray *menus = [NSMutableArray array];
+            TIMPopCellData *addFriend = [[TIMPopCellData alloc] init];
+            addFriend.image = TUIDemoDynamicImage(@"pop_icon_new_group_img", [UIImage imageNamed:TUIDemoImagePath(@"new_groupchat")]);
+            addFriend.title = @"添加好友";
+            [menus addObject:addFriend];
+            
+            TIMPopCellData *scan = [[TIMPopCellData alloc] init];
+            scan.image = TUIDemoDynamicImage(@"pop_icon_new_group_img", [UIImage imageNamed:TUIDemoImagePath(@"new_groupchat")]);
+            scan.title = @"扫一扫";
+            [menus addObject:scan];
+            
+            TIMPopCellData *myQRCode = [[TIMPopCellData alloc] init];
+            myQRCode.image = TUIDemoDynamicImage(@"pop_icon_new_group_img", [UIImage imageNamed:TUIDemoImagePath(@"new_groupchat")]);
+            myQRCode.title = @"我的二维码";
+            [menus addObject:myQRCode];
+            
+            TIMPopCellData *messageSetting = [[TIMPopCellData alloc] init];
+            messageSetting.image = TUIDemoDynamicImage(@"pop_icon_new_group_img", [UIImage imageNamed:TUIDemoImagePath(@"new_groupchat")]);
+            messageSetting.title = @"消息设置";
+            [menus addObject:messageSetting];
+            
+            CGFloat height = [TIMPopCell getHeight] * menus.count + TPopView_Arrow_Size.height;
+            CGFloat orginY = StatusBar_Height + NavBar_Height;
+            TIMPopView *popView = [[TIMPopView alloc] initWithFrame:CGRectMake(Screen_Width - 155, orginY, 145, height)];
+            CGRect frameInNaviView = [self.navigationController.view convertRect:button.frame fromView:button.superview];
+            popView.arrowPoint = CGPointMake(frameInNaviView.origin.x + frameInNaviView.size.width * 0.5, orginY);
+            popView.delegate = self;
+            [popView setData:menus];
+            [popView showInWindow:self.view.window];
+        }
+            break;
+        case TIMHomeItemFriendDynamics:
+            break;
+        default:
+            break;
+    }
 
-    CGFloat height = [TIMPopCell getHeight] * menus.count + TPopView_Arrow_Size.height;
-    CGFloat orginY = StatusBar_Height + NavBar_Height;
-    TIMPopView *popView = [[TIMPopView alloc] initWithFrame:CGRectMake(Screen_Width - 155, orginY, 145, height)];
-    CGRect frameInNaviView = [self.navigationController.view convertRect:button.frame fromView:button.superview];
-    popView.arrowPoint = CGPointMake(frameInNaviView.origin.x + frameInNaviView.size.width * 0.5, orginY);
-    popView.delegate = self;
-    [popView setData:menus];
-    [popView showInWindow:self.view.window];
 }
 
 #pragma mark JXCategoryViewDelegate
