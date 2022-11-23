@@ -52,6 +52,10 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
 @property(nonatomic, strong) JXCategoryTitleView *categoryView;
 @property(nonatomic, strong) JXCategoryListContainerView *listContainerView;
 
+@property(nonatomic, strong) TIMMessageViewController *messageVC;
+@property(nonatomic, strong) TIMContactViewController *contactVC;
+@property(nonatomic, strong) TIMFriendDynamicsViewController *friendDynamicsVC;
+
 @end
 
 @implementation TIMHomeViewController
@@ -59,6 +63,10 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.messageVC = [[TIMMessageViewController alloc] init];
+    self.contactVC = [[TIMContactViewController alloc] init];
+    self.friendDynamicsVC = [[TIMFriendDynamicsViewController alloc] init];
+
     self.categories = @[
         NSStringFromTIMHomeItem(TIMHomeItemMessage),
         NSStringFromTIMHomeItem(TIMHomeItemContact),
@@ -219,13 +227,13 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
     TIMHomeItem item = index;
     switch (item) {
         case TIMHomeItemMessage:
-            return [[TIMMessageViewController alloc] init];
+            return self.messageVC;
             break;
         case TIMHomeItemContact:
-            return [[TIMContactViewController alloc] init];
+            return self.contactVC;
             break;
         case TIMHomeItemFriendDynamics:
-            return [[TIMFriendDynamicsViewController alloc] init];
+            return self.friendDynamicsVC;
             break;
     }
 }
@@ -234,7 +242,7 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
 
 - (void)popView:(TIMPopView *)popView didSelectRowAtIndex:(NSInteger)index {
     @weakify(self)
-    if(index == 0){
+    if (index == 0) {
         // launch conversation
         TUIContactSelectController *vc = [TUIContactSelectController new];
         vc.title = NSLocalizedString(@"ChatsSelectContact", nil);
@@ -254,8 +262,7 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
             self.navigationController.viewControllers = tempArray;
         };
         return;
-    }
-    else {
+    } else {
         // create discuss group
         TUIContactSelectController *vc = [TUIContactSelectController new];
         vc.title = NSLocalizedString(@"ChatsSelectContact", nil);
