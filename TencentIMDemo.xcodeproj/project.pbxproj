@@ -12,6 +12,9 @@
 		1834AFFC292631EA0043631C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1834AFFA292631EA0043631C /* LaunchScreen.storyboard */; };
 		1834AFFF292631EA0043631C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834AFFE292631EA0043631C /* main.m */; };
 		1834B008292632840043631C /* TIMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1834B007292632840043631C /* TIMHomeViewController.m */; };
+		18457C1E292DC7D400C34991 /* TIMConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18457C1D292DC7D400C34991 /* TIMConversationListController.m */; };
+		18457C24292DF55F00C34991 /* TIMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18457C23292DF55F00C34991 /* TIMImage.m */; };
+		18457C2A292DFB4700C34991 /* TUIConversationCustomTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18457C29292DFB4700C34991 /* TUIConversationCustomTheme.bundle */; };
 		1845E9132927837200370C15 /* TIMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1845E9122927837200370C15 /* TIMMessageViewController.m */; };
 		185D7F71292CA8960021FD15 /* TIMTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7F70292CA8960021FD15 /* TIMTabbarController.m */; };
 		185D7F74292CAF850021FD15 /* TIMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185D7F73292CAF850021FD15 /* TIMNavigationController.m */; };
@@ -69,6 +72,11 @@
 		1834AFFE292631EA0043631C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1834B006292632840043631C /* TIMHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMHomeViewController.h; sourceTree = "<group>"; };
 		1834B007292632840043631C /* TIMHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMHomeViewController.m; sourceTree = "<group>"; };
+		18457C1C292DC7D400C34991 /* TIMConversationListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMConversationListController.h; sourceTree = "<group>"; };
+		18457C1D292DC7D400C34991 /* TIMConversationListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMConversationListController.m; sourceTree = "<group>"; };
+		18457C22292DF55F00C34991 /* TIMImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMImage.h; sourceTree = "<group>"; };
+		18457C23292DF55F00C34991 /* TIMImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMImage.m; sourceTree = "<group>"; };
+		18457C29292DFB4700C34991 /* TUIConversationCustomTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TUIConversationCustomTheme.bundle; sourceTree = "<group>"; };
 		1845E9112927837200370C15 /* TIMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMMessageViewController.h; sourceTree = "<group>"; };
 		1845E9122927837200370C15 /* TIMMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMMessageViewController.m; sourceTree = "<group>"; };
 		185D7F6F292CA8960021FD15 /* TIMTabbarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMTabbarController.h; sourceTree = "<group>"; };
@@ -173,6 +181,8 @@
 		1845E9102927835A00370C15 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				18457C1C292DC7D400C34991 /* TIMConversationListController.h */,
+				18457C1D292DC7D400C34991 /* TIMConversationListController.m */,
 				189AE70B29278F350095466B /* TIMFoldListViewController.h */,
 				189AE70C29278F350095466B /* TIMFoldListViewController.m */,
 				1845E9112927837200370C15 /* TIMMessageViewController.h */,
@@ -202,6 +212,7 @@
 		187C3762292CC7830073618C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				18457C29292DFB4700C34991 /* TUIConversationCustomTheme.bundle */,
 				187C3763292CC7920073618C /* TUIChatCustomTheme.bundle */,
 				187C3765292CC8B80073618C /* TUICoreCustomTheme.bundle */,
 				187C3779292CF63E0073618C /* TUIDemo.bundle */,
@@ -228,6 +239,8 @@
 				18705AB5292B696000AA1116 /* Extension */,
 				187C3767292CD4CA0073618C /* Pop */,
 				187C8FB4292738A9006E2389 /* TIMManager */,
+				18457C22292DF55F00C34991 /* TIMImage.h */,
+				18457C23292DF55F00C34991 /* TIMImage.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -417,6 +430,7 @@
 				187C3764292CC7920073618C /* TUIChatCustomTheme.bundle in Resources */,
 				187C377A292CF63E0073618C /* TUIDemoTheme.bundle in Resources */,
 				187C377B292CF63E0073618C /* TUIDemo.bundle in Resources */,
+				18457C2A292DFB4700C34991 /* TUIConversationCustomTheme.bundle in Resources */,
 				187C3766292CC8B80073618C /* TUICoreCustomTheme.bundle in Resources */,
 				1834AFF9292631EA0043631C /* Assets.xcassets in Resources */,
 			);
@@ -507,9 +521,11 @@
 				1834B008292632840043631C /* TIMHomeViewController.m in Sources */,
 				18705AB9292B69CC00AA1116 /* TIMFoldListViewController.m in Sources */,
 				187C8FB02927303A006E2389 /* TIMLoginViewController.m in Sources */,
+				18457C24292DF55F00C34991 /* TIMImage.m in Sources */,
 				187C8FA329272665006E2389 /* TIMBaseViewController.m in Sources */,
 				1845E9132927837200370C15 /* TIMMessageViewController.m in Sources */,
 				187C8FB7292738C2006E2389 /* TIMManager.m in Sources */,
+				18457C1E292DC7D400C34991 /* TIMConversationListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

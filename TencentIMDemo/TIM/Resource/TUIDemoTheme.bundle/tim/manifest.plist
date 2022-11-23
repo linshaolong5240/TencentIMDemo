@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>id</key>
-	<string>light</string>
+	<string>tim</string>
 	<key>name</key>
-	<string>轻量</string>
+	<string>tim</string>
 	<key>name_en</key>
-	<string>Light</string>
+	<string>TIM</string>
 	<key>logo_bg</key>
 	<string>logo_bg.png</string>
 	<key>login_logo</key>

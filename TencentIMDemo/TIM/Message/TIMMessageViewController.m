@@ -12,8 +12,9 @@
 #import <TUIC2CChatViewController.h>
 #import <TUIGroupChatViewController.h>
 #import "TIMFoldListViewController.h"
+#import "TIMConversationListController.h"
 
-@interface TIMMessageViewController () <TUIConversationListControllerListener>
+@interface TIMMessageViewController () <TIMConversationListControllerListener>
 
 @end
 
@@ -23,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    TUIConversationListController *conversationController = [[TUIConversationListController alloc] init];
+    TIMConversationListController *conversationController = [[TIMConversationListController alloc] init];
     conversationController.isEnableSearch = NO;
     conversationController.delegate = self;
     
