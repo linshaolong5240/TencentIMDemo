@@ -64,8 +64,11 @@ NSString *NSStringFromTIMHomeItem(TIMHomeItem item) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.messageVC = [[TIMMessageViewController alloc] init];
+    [self addChildViewController:self.messageVC];
     self.contactVC = [[TIMContactViewController alloc] init];
+    [self addChildViewController:self.contactVC];
     self.friendDynamicsVC = [[TIMFriendDynamicsViewController alloc] init];
+    [self addChildViewController:self.friendDynamicsVC];
 
     self.categories = @[
         NSStringFromTIMHomeItem(TIMHomeItemMessage),
